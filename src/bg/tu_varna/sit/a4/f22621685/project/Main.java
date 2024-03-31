@@ -3,34 +3,43 @@ package bg.tu_varna.sit.a4.f22621685.project;
 import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
 import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
+import bg.tu_varna.sit.a4.f22621685.project.table.TablePrinter;
 
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Table table = new Table();
+        Table table = new Table("Different types data");
 
         // Добавяне на колони към таблицата
-        Column<Integer> intColumn = new Column<>();
+        Column intColumn = new Column("Integer");
         intColumn.addCell(new Cell(10));
         intColumn.addCell(new Cell(20));
         intColumn.addCell(new Cell(30));
 
         table.addColumn(intColumn);
 
-        Column<Double> doubleColumn = new Column<>();
+        Column doubleColumn = new Column("Decimal numbers");
         doubleColumn.addCell(new Cell(10.5));
         doubleColumn.addCell(new Cell(20.5));
         doubleColumn.addCell(new Cell(25.5));
 
+
+
         table.addColumn(doubleColumn);
 
-        Column<String> stringColumn = new Column<>();
+        Column stringColumn = new Column("Text data");
         stringColumn.addCell(new Cell("Hello"));
         stringColumn.addCell(new Cell("World"));
-        stringColumn.addCell(new Cell("Hi"));
+        stringColumn.addCell(new Cell("Pesho"));
 
         table.addColumn(stringColumn);
+
+        Table table1 = new Table("Text data");
+        table1.addColumn(stringColumn);
+
+        TablePrinter.printTable(table);
+        TablePrinter.printTable(table1);
 /*
         // Извеждане на данните от таблицата
         List<Column<?>> columns = table.getColumns();
@@ -42,14 +51,6 @@ public class Main {
             System.out.println();
         }*/
 
-        int numRows = table.getColumns().get(0).getCells().size();
 
-        // Отпечатване на данните вертикално
-        for (int i = 0; i < numRows; i++) {
-            for (Column<?> column : table.getColumns()) {
-                System.out.print(column.getCells().get(i).getData() + "\t|\t");
-            }
-            System.out.println();
-        }
     }
 }

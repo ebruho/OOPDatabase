@@ -4,21 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
-    private List<Column<?>> columns;
+    private String tableName;
+    private List<Column> columns;
 
-    public Table() {
+
+    public Table(String tableName) {
+        this.tableName=tableName;
         columns = new ArrayList<>();
     }
 
-    public void addColumn(Column<?> column) {
+    public void addColumn(Column column) {
         columns.add(column);
     }
 
-    public void removeColumn(Column<?> column) {
+    public void removeColumn(Column column) {
         columns.remove(column);
     }
 
-    public List<Column<?>> getColumns() {
+    public List<Column> getColumns() {
         return columns;
     }
 }

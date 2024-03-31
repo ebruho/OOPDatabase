@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Column<T> {
+public class Column {
+    private String columnName;
     private List<Cell> cells;
 
-    public Column() {
+    public Column(String columnName) {
+        this.columnName=columnName;
         cells = new ArrayList<>();
     }
 
@@ -21,5 +23,17 @@ public class Column<T> {
 
     public List<Cell> getCells() {
         return cells;
+    }
+
+    public String getColumnName() {
+        return columnName;
+    }
+
+    public void setColumnName(String columnName) {
+        this.columnName = columnName;
+    }
+
+    public void setCells(List<Cell> cells) {
+        this.cells = cells;
     }
 }
