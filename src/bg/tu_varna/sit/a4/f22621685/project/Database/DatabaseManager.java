@@ -2,35 +2,29 @@ package bg.tu_varna.sit.a4.f22621685.project.Database;
 
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DatabaseManager {
-    List<Table> tables;
+    private Map<String, Table> tables;
 
     public DatabaseManager() {
-        this.tables = new ArrayList<>();
+        this.tables = new HashMap<>();
     }
 
-    void addTable(Table table){
-        tables.add(table);
+    public void addTable(String tableName, Table table) {
+        tables.put(tableName, table);
     }
 
-    void removeTable(Table table){
-        tables.remove(table);
+    public void removeTable(String tableName) {
+        tables.remove(tableName);
     }
 
-    public List<Table> getTables() {
-        return tables;
-    }
-
-    // Метод за проверка на уникалността на името на таблицата
     public boolean isTableNameUnique(String newTableName) {
-        for (Table existingTable : tables) {
-            if (existingTable.getTableName().equals(newTableName)) {
-                return false; // Името не е уникално
-            }
-        }
-        return true; // Името е уникално
+        return !tables.containsKey(newTableName);
+    }
+
+    public Table getTable(String tableName) {
+        return tables.get(tableName);
     }
 }
