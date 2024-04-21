@@ -38,7 +38,7 @@ public class Table {
             System.out.println("Error: The name \"" + tableName + "\" is already in use by another table.");
         }else {
             this.tableName = tableName;
-            System.out.println("Името на таблицата е променено успешно на \"" + tableName + "\".");
+            System.out.println("Table name was changed successfully  \"" + tableName + "\".");
         }
     }
 }
