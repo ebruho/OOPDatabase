@@ -36,4 +36,27 @@ public class Column {
     public void setCells(List<Cell> cells) {
         this.cells = cells;
     }
+
+    public Class<?> getColumnType(){
+        boolean hasString = false;
+        boolean hasDouble = false;
+
+        for (Cell cell:cells) {
+            Object data = cell.getData();
+            if(data instanceof String){
+                hasString = true;
+            } else if (data instanceof Double) {
+                hasDouble = true;
+            }
+        }
+
+        if (hasString){
+            return String.class;
+        } else if (hasDouble) {
+            return Double.class;
+        }else {
+            return Integer.class;
+        }
+    }
+
 }

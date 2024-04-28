@@ -6,7 +6,7 @@ import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
 import java.util.List;
 
-public class CountSameValue {
+public class CountCommand {
     //public static int countRowsWithGivenValue(Table table,)
 
     public static int countRowsWithGivenValue(Table table, String searchColumnName, Object searchValue) {
