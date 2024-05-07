@@ -12,13 +12,27 @@ public class InsertCommand {
         if(table==null||scanner==null){
             throw new InvalidException("Error: Invalid table or scanner.");
         }
+
+        int maxRows = 0;
+
+        // Намиране на максималния брой редове във всички колони
+        for (Column column : table.getColumns()) {
+            int columnSize = column.getCells().size();
+            if (columnSize > maxRows) {
+                maxRows = columnSize;
+            }
+        }
+
         System.out.println("Enter values for each column:");
 
         for (Column column: table.getColumns()){
             System.out.println(column.getColumnName()+": ");
             Object value = scanner.next();
             column.addCell(new Cell(value));
+
         }
+
+
     }
 
 }

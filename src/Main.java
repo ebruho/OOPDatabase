@@ -1,13 +1,10 @@
 
 import bg.tu_varna.sit.a4.f22621685.project.Database.DatabaseManager;
-import bg.tu_varna.sit.a4.f22621685.project.commands.CountCommand;
-import bg.tu_varna.sit.a4.f22621685.project.commands.DescribeCommand;
-import bg.tu_varna.sit.a4.f22621685.project.commands.InsertCommand;
+import bg.tu_varna.sit.a4.f22621685.project.commands.*;
 import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
 import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
 import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
-import bg.tu_varna.sit.a4.f22621685.project.commands.TablePrinter;
 
 import java.util.Scanner;
 
@@ -60,16 +57,23 @@ public class Main {
 
 
         Scanner scanner = new Scanner(System.in);
-
+/*
         try {
             InsertCommand.addRow(table,scanner);
+            InsertCommand.addRow(table1,scanner);
         } catch (InvalidException e) {
             throw new RuntimeException(e);
         }
+
+ */
+        DeleteCommand.deleteRows(table1,"Text data","Pesho");
+
         TablePrinter.printTable(table);
 
+        TablePrinter.printTable(table1);
 
-        DescribeCommand.getColumnInfo(table);
 
+        DescribeCommand.getColumnInfo(table1);
+        //System.out.println(table1.getColumns().get(1));
     }
 }
