@@ -17,7 +17,9 @@ public class DescribeCommand {
         System.out.println("Column Name\t|\tData Type");
         System.out.println("---------------------------------");
         for (Column column : table.getColumns()) {
-            System.out.println(column.getColumnName() + "\t|\t" + column.getColumnType().getSimpleName());
+            Class<?> columnType = column.getColumnType();
+            String dataType = (columnType != null) ? columnType.getSimpleName() : "Unknown";
+            System.out.println(column.getColumnName() + "\t|\t" + dataType);
         }
     }
 }

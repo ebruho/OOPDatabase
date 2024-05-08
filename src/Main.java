@@ -43,7 +43,7 @@ public class Main {
         table.addColumn(stringColumn);
 
         Column nullColumn = new Column("Null data");
-        nullColumn.addCell(new Cell("Pesho"));
+        //nullColumn.addCell(new Cell("Pesho"));
 
         Table table1 = new Table("Text data",databaseManager);
         table1.addColumn(stringColumn);
@@ -66,7 +66,9 @@ public class Main {
         }
 
  */
-        DeleteCommand.deleteRows(table1,"Text data","Pesho");
+        DeleteCommand.deleteRows(table1,"Text data","Hello");
+
+        //SelectCommand.selectRows("Text data", "Pesho", table, 1, 2);
 
         TablePrinter.printTable(table);
 

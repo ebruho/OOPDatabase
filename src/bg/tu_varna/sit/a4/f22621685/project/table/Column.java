@@ -40,6 +40,7 @@ public class Column {
     public Class<?> getColumnType(){
         boolean hasString = false;
         boolean hasDouble = false;
+        boolean hasInteger = false;
 
         for (Cell cell:cells) {
             Object data = cell.getData();
@@ -47,6 +48,8 @@ public class Column {
                 hasString = true;
             } else if (data instanceof Double) {
                 hasDouble = true;
+            }else if(data instanceof Integer){
+                hasInteger=true;
             }
         }
 
@@ -54,8 +57,10 @@ public class Column {
             return String.class;
         } else if (hasDouble) {
             return Double.class;
-        }else {
+        } else if (hasInteger) {
             return Integer.class;
+        } else {
+            return null;
         }
     }
 
