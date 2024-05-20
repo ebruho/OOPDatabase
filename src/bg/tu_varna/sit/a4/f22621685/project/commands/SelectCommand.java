@@ -1,51 +1,61 @@
 package bg.tu_varna.sit.a4.f22621685.project.commands;
 
-import bg.tu_varna.sit.a4.f22621685.project.table.Table;
-import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
+import bg.tu_varna.sit.a4.f22621685.project.table.Column;
+import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SelectCommand {
 
-    public static void selectRows(String columnName, Object value, Table table, int pageNumber, int pageSize) {
+    public static void selectRows(String columnName, Object searchValue, Table table) {
         if (table == null) {
             System.out.println("Error: Invalid table.");
             return;
         }
 
-        Column selectedColumn = null;
-        for (Column column : table.getColumns()) {
-            if (column.getColumnName().equalsIgnoreCase(columnName)) {
-                selectedColumn = column;
+        // Намиране на индекса на търсената колона
+        int columnIndex = -1;
+        List<Column> columns = table.getColumns();
+        for (int i = 0; i < columns.size(); i++) {
+            if (columns.get(i).getColumnName().equals(columnName)) {
+                columnIndex = i;
                 break;
             }
         }
 
-        if (selectedColumn == null) {
+        if (columnIndex == -1) {
             System.out.println("Error: Column '" + columnName + "' not found.");
             return;
         }
 
-        List<Cell> cells = selectedColumn.getCells();
-        System.out.println("Selected rows from table '" + table.getTableName() + "' where column '" + columnName + "' has value '" + value + "':");
-        int count = 0;
-        for (int i = 0; i < cells.size(); i++) {
-            Cell cell = cells.get(i);
-            if (cell.getData() != null && cell.getData().equals(value)) {
-                if (count >= (pageNumber - 1) * pageSize && count < pageNumber * pageSize) {
-                    System.out.print("Row " + (i + 1) + ": ");
-                    for (Column column : table.getColumns()) {
-                        System.out.print(column.getColumnName() + ": " + column.getCells().get(i).getData() + " | ");
-                    }
-                    System.out.println();
-                }
-                count++;
+        // Извеждане на заглавието
+        System.out.println("Selected rows from table '" + table.getTableName() + "' where column '" + columnName + "' has value '" + searchValue + "':");
+
+        // Извеждане на съответните редове
+        Column searchColumn = table.getColumns().get(columnIndex);
+        for (int i = 0; i < searchColumn.getCells().size(); i++) {
+            Cell cell = searchColumn.getCells().get(i);
+            Object data = cell.getData();
+            if (data != null && data.equals(searchValue)) {
+                System.out.println("Row " + (i + 1) + ": " + formatRow(table, i));
             }
         }
+    }
 
-        if (count == 0) {
-            System.out.println("No rows found with the specified value in the selected column.");
+    // Форматиране на реда за отпечатване
+    private static String formatRow(Table table, int rowIndex) {
+        List<Column> columns = table.getColumns();
+        StringBuilder formattedRow = new StringBuilder();
+        for (int i = 0; i < columns.size(); i++) {
+            Column column = columns.get(i);
+            List<Cell> cells = column.getCells();
+            if (rowIndex < cells.size()) {
+                Object data = cells.get(rowIndex).getData();
+                formattedRow.append(column.getColumnName()).append(": ").append(data).append(" | ");
+            }
         }
+        return formattedRow.toString();
     }
 }

@@ -25,13 +25,16 @@ public class InsertCommand {
 
         System.out.println("Enter values for each column:");
 
-        for (Column column: table.getColumns()){
-            System.out.println(column.getColumnName()+": ");
+        // Инициализация на масива за данните на новия ред
+        Object[] rowData = new Object[table.getColumns().size()];
+
+        for (int i = 0; i < table.getColumns().size(); i++) {
+            Column column = table.getColumns().get(i);
+            System.out.println(column.getColumnName() + ": ");
             Object value = scanner.next();
-            column.addCell(new Cell(value));
-
+            rowData[i] = value;
         }
-
+        table.addRow(rowData);
 
     }
 

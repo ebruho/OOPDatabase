@@ -43,4 +43,16 @@ public class Table {
             System.out.println("Table name was changed successfully  \"" + tableName + "\".");
         }
     }
+
+    public void addRow(Object[] array) {
+        // Добавяне на нов ред към таблицата
+
+            if (array.length != columns.size()) {
+                throw new IllegalArgumentException("Row data length does not match number of columns.");
+            }
+            for (int i = 0; i < columns.size(); i++) {
+                columns.get(i).addCell(new Cell(array[i]));
+            }
+
+    }
 }
