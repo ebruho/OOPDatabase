@@ -137,7 +137,15 @@ public class Main {
         Table table4 = InnerJoinCommand.innerJoin(table2,"ID",table3,"ID",resultTable,databaseManager);
         TablePrinter.printTable(table4);
 
-
+        try {
+            databaseManager.addTable(table);
+            databaseManager.addTable(table1);
+            databaseManager.addTable(table2);
+            databaseManager.addTable(table3);
+            databaseManager.addTable(table4);
+        } catch (InvalidException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println(CountCommand.countRowsWithGivenValue(table4,"Age",35));
 
         DescribeCommand.getColumnInfo(table1);
@@ -148,6 +156,52 @@ public class Main {
 
         UpdateCommand.updateRows(table4,"ID",1,"Age",28);
         TablePrinter.printTable(table4);
+
+        RenameCommand.renameTable(databaseManager,"Text data","Text and null table");
+        TablePrinter.printTable(table1);
+
+
+        TablePrinter.printTable(table4);
+        RenameCommand.renameTable(databaseManager,"Inner join","Union table");
+        TablePrinter.printTable(table4);
+
+
+        try {
+            // Create and add table to the database
+            Table table5 = new Table("ExampleTable", databaseManager);
+            Column searchColumn = new Column("SearchColumn");
+            Column targetColumn = new Column("TargetColumn");
+
+            searchColumn.addCell(new Cell("Match"));
+            searchColumn.addCell(new Cell("NoMatch"));
+            searchColumn.addCell(new Cell("Match"));
+            searchColumn.addCell(new Cell("Match"));
+            searchColumn.addCell(new Cell("Match"));
+
+            targetColumn.addCell(new Cell(10));
+            targetColumn.addCell(new Cell(20));
+            targetColumn.addCell(new Cell(30));
+            targetColumn.addCell(new Cell(50));
+            targetColumn.addCell(new Cell(null));
+
+
+            table5.addColumn(searchColumn);
+            table5.addColumn(targetColumn);
+
+            databaseManager.addTable(table5);
+
+            // Perform aggregation
+            AggregateCommand.aggregate(table5, "SearchColumn", "Match", "TargetColumn", "sum");
+            AggregateCommand.aggregate(table5, "SearchColumn", "Match", "TargetColumn", "product");
+            AggregateCommand.aggregate(table5, "SearchColumn", "Match", "TargetColumn", "maximum");
+            AggregateCommand.aggregate(table5, "SearchColumn", "Match", "TargetColumn", "minimum");
+
+
+        } catch (InvalidException e) {
+            System.out.println(e.getMessage());
+        }
+
+        ShowTablesCommand.showTables(databaseManager);
     }
 
 }

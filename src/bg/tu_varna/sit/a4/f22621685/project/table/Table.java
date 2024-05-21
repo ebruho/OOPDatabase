@@ -35,13 +35,9 @@ public class Table {
         return tableName;
     }
 
-    public void setTableName(String tableName) throws InvalidException {
-        if(databaseManager.isTableNameUnique(tableName)){
-            throw new InvalidException("Error: The name \"" + tableName + "\" is already in use by another table.");
-        }else {
-            this.tableName = tableName;
-            System.out.println("Table name was changed successfully  \"" + tableName + "\".");
-        }
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+        //System.out.println("Table name was changed successfully to \"" + tableName + "\".");
     }
 
     public void addRow(Object[] array) {

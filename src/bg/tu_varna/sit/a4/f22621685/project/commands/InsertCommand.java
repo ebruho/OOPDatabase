@@ -9,13 +9,12 @@ import java.util.Scanner;
 
 public class InsertCommand {
     public static void addRow(Table table, Scanner scanner) throws InvalidException {
-        if(table==null||scanner==null){
+        if (table == null || scanner == null) {
             throw new InvalidException("Error: Invalid table or scanner.");
         }
 
+        // Намиране на максималния брой редове във всички колони (ако е необходимо)
         int maxRows = 0;
-
-        // Намиране на максималния брой редове във всички колони
         for (Column column : table.getColumns()) {
             int columnSize = column.getCells().size();
             if (columnSize > maxRows) {
@@ -31,11 +30,17 @@ public class InsertCommand {
         for (int i = 0; i < table.getColumns().size(); i++) {
             Column column = table.getColumns().get(i);
             System.out.println(column.getColumnName() + ": ");
-            Object value = scanner.next();
-            rowData[i] = value;
+            String input = scanner.next();
+
+            // Проверка за null стойности и празни входове
+            if (input.equalsIgnoreCase("null")) {
+                rowData[i] = null;
+            } else {
+                rowData[i] = input;
+            }
         }
+
+        // Добавяне на новия ред в таблицата
         table.addRow(rowData);
-
     }
-
 }
