@@ -11,9 +11,10 @@ import java.util.stream.Collectors;
 
 public class DatabaseManager {
     private Map<String, Table> tables;
-
+    private String filePath;
     public DatabaseManager() {
         this.tables = new HashMap<>();
+        this.filePath=null;
     }
 
     public void addTable(Table table) throws InvalidException {
@@ -29,6 +30,14 @@ public class DatabaseManager {
 
     public boolean isTableNameUnique(String newTableName) {
         return !tables.containsKey(newTableName);
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     public void renameTable(String oldName, String newName) throws InvalidException {

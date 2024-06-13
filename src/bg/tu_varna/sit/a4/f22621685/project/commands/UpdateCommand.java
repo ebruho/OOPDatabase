@@ -1,15 +1,16 @@
 package bg.tu_varna.sit.a4.f22621685.project.commands;
 
+import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
 import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
 import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
 public class UpdateCommand {
-    public static void updateRows(Table table, String searchColumnName, Object searchValue,
-                                  String targetColumnName, Object targetValue) {
+    public void updateRows(Table table, String searchColumnName, Object searchValue,
+                                  String targetColumnName, Object targetValue) throws InvalidException {
         if (table == null || searchColumnName == null || searchValue == null || targetColumnName == null) {
-            System.out.println("Error: Invalid input.");
-            return;
+            throw new InvalidException("Error: Invalid input.");
+
         }
 
         // Намиране на индекса на търсената колона

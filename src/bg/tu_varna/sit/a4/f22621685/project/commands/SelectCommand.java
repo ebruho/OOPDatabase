@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.a4.f22621685.project.commands;
 
+import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
 import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
 import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
@@ -9,10 +10,10 @@ import java.util.List;
 
 public class SelectCommand {
 
-    public static void selectRows(String columnName, Object searchValue, Table table) {
+    public void selectRows(String columnName, Object searchValue, Table table) throws InvalidException {
         if (table == null) {
-            System.out.println("Error: Invalid table.");
-            return;
+            throw new InvalidException("Error: Invalid table.");
+
         }
 
         // Намиране на индекса на търсената колона
@@ -45,7 +46,7 @@ public class SelectCommand {
     }
 
     // Форматиране на реда за отпечатване
-    private static String formatRow(Table table, int rowIndex) {
+    private String formatRow(Table table, int rowIndex) {
         List<Column> columns = table.getColumns();
         StringBuilder formattedRow = new StringBuilder();
         for (int i = 0; i < columns.size(); i++) {

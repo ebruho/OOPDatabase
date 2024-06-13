@@ -63,7 +63,9 @@ import java.util.List;
 
 public class TablePrinter {
 
-    public static void printTable(Table table){
+    private Cell cell;
+
+    public void printTable(Table table){
         int maxRows = 0;
 
         // Намиране на максималния брой редове във всички колони
@@ -79,7 +81,12 @@ public class TablePrinter {
         for (Column column : table.getColumns()) {
             int maxCellWidth = column.getColumnName().length();
             for (Cell cell : column.getCells()) {
-                int cellWidth = cell.getData().toString().length();
+                int cellWidth=0;
+                if(cell.getData()==null){
+                    cellWidth=4;
+                }else {
+                    cellWidth = cell.getData().toString().length();
+                }
                 if (cellWidth > maxCellWidth) {
                     maxCellWidth = cellWidth;
                 }
@@ -112,7 +119,12 @@ public class TablePrinter {
             for (int j = 0; j < table.getColumns().size(); j++) {
                 Column column = table.getColumns().get(j);
                 if (i < column.getCells().size()) {
-                    String cellData = column.getCells().get(i).getData().toString();
+                    String cellData="";
+                    if(column.getCells().get(i).getData()==null){
+                        cellData = "NULL";
+                    }else {
+                        cellData = column.getCells().get(i).getData().toString();
+                    }
                     int columnWidth = maxColumnWidths.get(j);
                     System.out.print(padRight(cellData, columnWidth) + "\t|\t");
                 } else {
@@ -126,7 +138,7 @@ public class TablePrinter {
     }
 
     // Функция за добавяне на празно пространство до дадена дължина
-    private static String padRight(String s, int n) {
+    private String padRight(String s, int n) {
         return String.format("%-" + n + "s", s);
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 public class CountCommand {
     //public static int countRowsWithGivenValue(Table table,)
 
-    public static int countRowsWithGivenValue(Table table, String searchColumnName, Object searchValue) {
+    public int countRowsWithGivenValue(Table table, String searchColumnName, Object searchValue) {
         int count = 0;
 
         List<Column> columns = table.getColumns();

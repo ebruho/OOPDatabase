@@ -1,15 +1,15 @@
 package bg.tu_varna.sit.a4.f22621685.project.commands;
 
+import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
 import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
 import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
 public class DescribeCommand {
 
-    public static void getColumnInfo(Table table) {
+    public void getColumnInfo(Table table) throws InvalidException {
         if (table == null) {
-            System.out.println("Error: Invalid table.");
-            return;
+            throw new InvalidException("Error: Invalid table.");
         }
 
         System.out.println("Description of table: " + table.getTableName());

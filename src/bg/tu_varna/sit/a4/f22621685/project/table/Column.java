@@ -44,12 +44,12 @@ public class Column {
 
         for (Cell cell:cells) {
             Object data = cell.getData();
-            if(data instanceof String){
-                hasString = true;
-            } else if (data instanceof Double) {
+            if(checkInteger(data)){
+                hasInteger = true;
+            } else if (checkDouble(data)) {
                 hasDouble = true;
-            }else if(data instanceof Integer){
-                hasInteger=true;
+            }else {
+                hasString=true;
             }
         }
 
@@ -61,6 +61,21 @@ public class Column {
             return Integer.class;
         } else {
             return null;
+        }
+    }
+    private boolean checkDouble(Object data){
+        try{
+            double v = Double.parseDouble((String) data);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }private boolean checkInteger(Object data){
+        try{
+            double v = Integer.parseInt((String) data);
+            return true;
+        }catch (Exception e){
+            return false;
         }
     }
 

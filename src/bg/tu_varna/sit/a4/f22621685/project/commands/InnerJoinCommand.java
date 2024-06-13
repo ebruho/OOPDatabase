@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class InnerJoinCommand {
-    public static Table innerJoin(Table table1, String column1Name, Table table2, String column2Name, String resultTableName, DatabaseManager databaseManager) {
+    public Table innerJoin(Table table1, String column1Name, Table table2, String column2Name, String resultTableName, DatabaseManager databaseManager) {
         Table resultTable = new Table(resultTableName, databaseManager);
 
         // Добавяме колоните от първата таблица
@@ -60,7 +60,6 @@ public class InnerJoinCommand {
                 }
             }
         }
-
         return resultTable;
     }
 }

@@ -8,7 +8,8 @@ import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 import java.util.Scanner;
 
 public class InsertCommand {
-    public static void addRow(Table table, Scanner scanner) throws InvalidException {
+    public void addRow(Table table) throws InvalidException {
+        Scanner scanner = new Scanner(System.in);
         if (table == null || scanner == null) {
             throw new InvalidException("Error: Invalid table or scanner.");
         }

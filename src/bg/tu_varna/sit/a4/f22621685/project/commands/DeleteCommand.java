@@ -5,10 +5,11 @@ import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
 import java.util.Iterator;
+import java.util.List;
 
 public class DeleteCommand {
 
-    public static void deleteRows(Table table, String searchColumnName, Object searchValue) {
+    public void deleteRows(Table table, String searchColumnName, Object searchValue) {
         if (table == null || searchColumnName == null) {
             System.out.println("Error: Invalid input.");
             return;
@@ -31,29 +32,17 @@ public class DeleteCommand {
 
         // Изтриване на редовете със съответната стойност в търсената колона
         Column searchColumn = table.getColumns().get(columnIndex);
-        Iterator<Cell> searchColumnIterator = searchColumn.getCells().iterator();
-        int rowIndex = 0;
-
-        while (searchColumnIterator.hasNext()) {
-            Cell cell = searchColumnIterator.next();
-            if (cell != null && cell.getData() != null) {
-                if (searchValue == null && cell.getData() == null) {
-                    // Ако търсената стойност и стойността на клетката са null
-                    removeRow(table, rowIndex);
-                    rowIndex--; // Намаляваме rowIndex, за да не пропуснем следващия ред
-                } else if (searchValue != null && searchValue.equals(cell.getData())) {
-                    // Ако стойностите съвпадат
-                    removeRow(table, rowIndex);
-                    rowIndex--; // Намаляваме rowIndex, за да не пропуснем следващия ред
-                }
+        List<Cell> cells = searchColumn.getCells();
+        for (int i = 0; i < cells.size(); i++) {
+            if(cells.get(i).getData().equals(searchValue)){
+               removeRow(table,i);
+               i--;
             }
-            rowIndex++;
         }
-
         System.out.println("Rows deleted successfully.");
     }
 
-    private static void removeRow(Table table, int rowIndex) {
+    private void removeRow(Table table, int rowIndex) {
         for (Column column : table.getColumns()) {
             if (rowIndex < column.getCells().size()) {
                 column.getCells().remove(rowIndex);

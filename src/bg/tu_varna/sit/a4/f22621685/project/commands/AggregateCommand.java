@@ -1,13 +1,14 @@
 package bg.tu_varna.sit.a4.f22621685.project.commands;
 
+import bg.tu_varna.sit.a4.f22621685.project.contracts.Command;
 import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
 import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
 import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
-public class AggregateCommand {
+public class AggregateCommand{
 
-    public static void aggregate(Table table, String searchColumnName, Object searchValue, String targetColumnName, String operation) throws InvalidException {
+    public void aggregate(Table table, String searchColumnName, Object searchValue, String targetColumnName, String operation) throws InvalidException {
         if (table == null || searchColumnName == null || searchValue == null || targetColumnName == null || operation == null) {
             throw new InvalidException("Error: Invalid input.");
         }
@@ -95,7 +96,7 @@ public class AggregateCommand {
         System.out.println("Result of " + operation + " operation: " + result);
     }
 
-    private static boolean isNumericColumn(Column column) {
+    private boolean isNumericColumn(Column column) {
         for (Cell cell : column.getCells()) {
             if (cell != null && cell.getData() != null && !(cell.getData() instanceof Number)) {
                 return false;
