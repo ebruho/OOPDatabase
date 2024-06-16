@@ -1,7 +1,7 @@
 package bg.tu_varna.sit.a4.f22621685.project.commands.menuComands;
 
 import bg.tu_varna.sit.a4.f22621685.project.Database.DatabaseManager;
-import bg.tu_varna.sit.a4.f22621685.project.commands.TablePrinter;
+import bg.tu_varna.sit.a4.f22621685.project.commands.functions.TablePrinter;
 import bg.tu_varna.sit.a4.f22621685.project.contracts.Command;
 import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;

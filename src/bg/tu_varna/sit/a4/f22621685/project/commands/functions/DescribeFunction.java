@@ -1,11 +1,10 @@
-package bg.tu_varna.sit.a4.f22621685.project.commands;
+package bg.tu_varna.sit.a4.f22621685.project.commands.functions;
 
 import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
-import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
 import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
-public class DescribeCommand {
+public class DescribeFunction {
 
     public void getColumnInfo(Table table) throws InvalidException {
         if (table == null) {

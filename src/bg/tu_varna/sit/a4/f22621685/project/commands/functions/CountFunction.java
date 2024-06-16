@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.a4.f22621685.project.commands;
+package bg.tu_varna.sit.a4.f22621685.project.commands.functions;
 
 import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
 import bg.tu_varna.sit.a4.f22621685.project.table.Column;
@@ -6,7 +6,7 @@ import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
 import java.util.List;
 
-public class CountCommand {
+public class CountFunction {
     //public static int countRowsWithGivenValue(Table table,)
 
     public int countRowsWithGivenValue(Table table, String searchColumnName, Object searchValue) {

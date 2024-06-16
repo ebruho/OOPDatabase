@@ -1,18 +1,16 @@
-package bg.tu_varna.sit.a4.f22621685.project.commands;
+package bg.tu_varna.sit.a4.f22621685.project.commands.functions;
 
 import bg.tu_varna.sit.a4.f22621685.project.Database.DatabaseManager;
 import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
 import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
-public class InnerJoinCommand {
+public class InnerJoinFunction {
     public Table innerJoin(Table table1, String column1Name, Table table2, String column2Name, String resultTableName, DatabaseManager databaseManager) {
+        Scanner scanner = new Scanner(System.in);
+        resultTableName = scanner.next();
         Table resultTable = new Table(resultTableName, databaseManager);
 
         // Добавяме колоните от първата таблица

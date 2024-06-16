@@ -44,6 +44,7 @@ public class Column {
 
         for (Cell cell:cells) {
             Object data = cell.getData();
+            /*
             if(checkInteger(data)){
                 hasInteger = true;
             } else if (checkDouble(data)) {
@@ -51,6 +52,16 @@ public class Column {
             }else {
                 hasString=true;
             }
+            */
+            //That is an alternative method
+            if (data instanceof Integer) {
+                hasInteger = true;
+            } else if (data instanceof Double) {
+                hasDouble = true;
+            } else if (data instanceof String) {
+                hasString = true;
+            }
+
         }
 
         if (hasString){

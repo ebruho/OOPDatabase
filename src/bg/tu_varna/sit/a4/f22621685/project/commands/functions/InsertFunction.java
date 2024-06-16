@@ -1,13 +1,12 @@
-package bg.tu_varna.sit.a4.f22621685.project.commands;
+package bg.tu_varna.sit.a4.f22621685.project.commands.functions;
 
 import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
-import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
 import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
 import java.util.Scanner;
 
-public class InsertCommand {
+public class InsertFunction {
     public void addRow(Table table) throws InvalidException {
         Scanner scanner = new Scanner(System.in);
         if (table == null || scanner == null) {

@@ -1,9 +1,9 @@
-package bg.tu_varna.sit.a4.f22621685.project.commands;
+package bg.tu_varna.sit.a4.f22621685.project.commands.functions;
 
 import bg.tu_varna.sit.a4.f22621685.project.Database.DatabaseManager;
 import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
 
-public class RenameCommand {
+public class RenameFunction {
     public void renameTable(DatabaseManager databaseManager, String oldName, String newName) {
         try {
             databaseManager.renameTable(oldName, newName);

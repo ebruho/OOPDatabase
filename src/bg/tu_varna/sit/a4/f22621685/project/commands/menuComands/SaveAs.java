@@ -1,14 +1,14 @@
 package bg.tu_varna.sit.a4.f22621685.project.commands.menuComands;
 
 import bg.tu_varna.sit.a4.f22621685.project.Database.DatabaseManager;
-import bg.tu_varna.sit.a4.f22621685.project.commands.ExportFunctions;
+import bg.tu_varna.sit.a4.f22621685.project.commands.functions.AddColumnFunctions;
 import bg.tu_varna.sit.a4.f22621685.project.contracts.Command;
 import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
 
 public class SaveAs implements Command {
-    private final ExportFunctions exportFunctions;
+    private final AddColumnFunctions.ExportFunctions exportFunctions;
 
-    public SaveAs(ExportFunctions exportFunctions) {
+    public SaveAs(AddColumnFunctions.ExportFunctions exportFunctions) {
         this.exportFunctions = exportFunctions;
     }
 

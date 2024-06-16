@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OOPDatabase:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/OOPDatabase_jar2</output-path>
+    <root id="archive" name="OOPDatabase.jar">
+      <element id="module-output" name="OOPDatabase" />
+    </root>
+  </artifact>
+</component>

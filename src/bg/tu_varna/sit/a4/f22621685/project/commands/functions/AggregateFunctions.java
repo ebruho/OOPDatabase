@@ -1,12 +1,11 @@
-package bg.tu_varna.sit.a4.f22621685.project.commands;
+package bg.tu_varna.sit.a4.f22621685.project.commands.functions;
 
-import bg.tu_varna.sit.a4.f22621685.project.contracts.Command;
 import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
 import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
 import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
-public class AggregateCommand{
+public class AggregateFunctions {
 
     public void aggregate(Table table, String searchColumnName, Object searchValue, String targetColumnName, String operation) throws InvalidException {
         if (table == null || searchColumnName == null || searchValue == null || targetColumnName == null || operation == null) {
