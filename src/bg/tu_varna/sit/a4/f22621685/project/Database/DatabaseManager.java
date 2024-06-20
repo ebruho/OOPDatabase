@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.a4.f22621685.project.Database;
 
+import bg.tu_varna.sit.a4.f22621685.project.commands.functions.CatalogFunction;
 import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
@@ -12,9 +13,11 @@ import java.util.stream.Collectors;
 public class DatabaseManager {
     private Map<String, Table> tables;
     private String filePath;
+    private CatalogFunction catalogFunction;
     public DatabaseManager() {
         this.tables = new HashMap<>();
         this.filePath=null;
+        catalogFunction = new CatalogFunction();
     }
 
     public void addTable(Table table) throws InvalidException {
@@ -63,5 +66,13 @@ public class DatabaseManager {
 
     public List<String> getTableNames() {
         return tables.keySet().stream().collect(Collectors.toList());
+    }
+
+    public CatalogFunction getCatalogFunction() {
+        return catalogFunction;
+    }
+
+    public void setCatalogFunction(CatalogFunction catalogFunction) {
+        this.catalogFunction = catalogFunction;
     }
 }

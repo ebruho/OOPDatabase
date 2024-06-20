@@ -69,6 +69,10 @@ public class TablePrinter {
         int maxRows = 0;
 
         // Намиране на максималния брой редове във всички колони
+        if(table==null){
+            System.out.println("There is no such table!");
+            return;
+        }
         for (Column column : table.getColumns()) {
             int columnSize = column.getCells().size();
             if (columnSize > maxRows) {

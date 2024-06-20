@@ -1,0 +1,7 @@
+Orders
+OrderID==CustomerID==OrderDate==TotalAmount==Status
+1001==1==2023-05-01==250.50==Shipped
+1002==2==2023-05-03==150.75==Pending
+1003==3==2023-05-05==320.00==Delivered
+1004==4==2023-05-10==75.20==Shipped
+1005==5==2023-05-12==500.00==Cancelled

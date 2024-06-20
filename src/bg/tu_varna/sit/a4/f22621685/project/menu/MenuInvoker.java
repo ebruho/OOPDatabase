@@ -31,18 +31,20 @@ public class MenuInvoker {
         commandMap.put("select",new SelectMenuCommand(new SelectFunction()));
         commandMap.put("update",new UpdateMenuCommand(new UpdateFunction()));
         commandMap.put("innerjoin", new InnerJoinMenuCommand(new InnerJoinFunction(),new TablePrinter()));
-        commandMap.put("export",new ExportMenuCommand(new AddColumnFunctions.ExportFunctions(databaseManager)));
+        commandMap.put("export",new ExportMenuCommand(new ExportFunctions(databaseManager)));
         commandMap.put("addcolumn", new AddColumnMenuCommand(new AddColumnFunctions()));
-        commandMap.put("saveas",new SaveAs(new AddColumnFunctions.ExportFunctions(databaseManager)));
-        commandMap.put("save",new SaveCommand(new AddColumnFunctions.ExportFunctions(databaseManager)));
+        commandMap.put("saveas",new SaveAs(new ExportFunctions(databaseManager)));
+        commandMap.put("save",new SaveCommand(new ExportFunctions(databaseManager)));
         commandMap.put("open",new OpenCommand(new ImportFunction(databaseManager)));
         commandMap.put("close",new CloseCommand());
         commandMap.put("help",new HelpCommand());
+        commandMap.put("catalog",new CatalogCommand());
     }
     public void run() throws InvalidException {
         fillMap();
         Scanner scanner = new Scanner(System.in);
         while (true){
+            System.out.println("Enter a new command:");
             String[] tokens = scanner.nextLine().split("\\s+");
             if (tokens[0].equals("exit")){
                 break;

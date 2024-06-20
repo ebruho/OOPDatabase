@@ -1,0 +1,7 @@
+Customers
+CustomerID==FirstName==LastName==Email==PhoneNumber==JoinDate
+1==Alice==Johnson==alice.johnson@example.com==555-1234==2022-01-15
+2==Bob==Smith==bob.smith@example.com==555-5678==2021-03-22
+3==Carol==Davis==carol.davis@example.com==555-8765==2020-07-10
+4==Dave==Wilson==dave.wilson@example.com==555-4321==2023-11-05
+5==Eve==Brown==eve.brown@example.com==555-6789==2019-12-01

@@ -1,0 +1,10 @@
+Employees
+EmployeeID==FirstName==LastName==Age==Salary==Department
+1==John==Doe==30==55000.0==IT
+2==Jane==Smith==25==60000.0==HR
+3==Michael==Johnson==35==70000.0==Finance
+4==Emily==Davis==40==80000.0==Marketing
+5==William==Brown==28==52000.0==IT
+6==Olivia==Wilson==32==65000.0==HR
+7==James==Taylor==45==75000.0==Finance
+8==Isabella==Martinez==29==56000.0==Marketing

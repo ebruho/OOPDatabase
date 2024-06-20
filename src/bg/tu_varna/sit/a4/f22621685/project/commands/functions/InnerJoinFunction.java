@@ -9,8 +9,6 @@ import java.util.*;
 
 public class InnerJoinFunction {
     public Table innerJoin(Table table1, String column1Name, Table table2, String column2Name, String resultTableName, DatabaseManager databaseManager) {
-        Scanner scanner = new Scanner(System.in);
-        resultTableName = scanner.next();
         Table resultTable = new Table(resultTableName, databaseManager);
 
         // Добавяме колоните от първата таблица

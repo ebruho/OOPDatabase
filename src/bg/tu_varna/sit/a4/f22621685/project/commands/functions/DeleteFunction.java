@@ -33,7 +33,8 @@ public class DeleteFunction {
         Column searchColumn = table.getColumns().get(columnIndex);
         List<Cell> cells = searchColumn.getCells();
         for (int i = 0; i < cells.size(); i++) {
-            if(cells.get(i).getData().equals(searchValue)){
+            String currentRow = (String)cells.get(i).getData();
+            if(currentRow.equals(searchValue)){
                removeRow(table,i);
                i--;
             }

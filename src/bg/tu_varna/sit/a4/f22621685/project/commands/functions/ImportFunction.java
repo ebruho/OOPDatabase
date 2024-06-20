@@ -24,6 +24,9 @@ public class ImportFunction {
         }
         try(FileReader fileReader = new FileReader(file)){
             Scanner scanner = new Scanner(fileReader);
+            if(!scanner.hasNext()){
+                return;
+            }
             String tableName = scanner.nextLine();
             Table table = new Table(tableName,databaseManager);
             String[] columnNames = scanner.nextLine().split("==");
@@ -35,6 +38,8 @@ public class ImportFunction {
                 table.addRow(columnValues);
             }
             databaseManager.addTable(table);
+            databaseManager.getCatalogFunction().addTable(filePath,table);//for catalog
+            System.out.println("Successfully opened "+filePath);
         } catch (InvalidException | IOException e) {
             throw new RuntimeException(e);
         }

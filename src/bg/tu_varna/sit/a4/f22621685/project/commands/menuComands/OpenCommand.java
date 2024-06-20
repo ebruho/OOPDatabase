@@ -14,6 +14,9 @@ public class OpenCommand implements Command {
 
     @Override
     public void execute(String[] data, DatabaseManager databaseManager) throws InvalidException {
+        if(databaseManager.getFilePath()!=null){
+            throw  new InvalidException("There is already opened file!!!!!!!!!!!!!!!!:(");
+        }
         importFunction.importFile(data[1]);
         databaseManager.setFilePath(data[1]);
     }

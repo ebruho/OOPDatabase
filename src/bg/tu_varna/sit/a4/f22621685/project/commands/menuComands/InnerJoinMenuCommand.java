@@ -22,7 +22,8 @@ public class InnerJoinMenuCommand implements Command {
         Table table = databaseManager.getTable(tableName);
         String tableName2 = data[3];
         Table table2 = databaseManager.getTable(tableName2);
-        Table table1 = innerJoinFunction.innerJoin(table, data[2], table2, data[4], data[5], databaseManager);
+        String newNameTable = data[2]+"to"+data[4];
+        Table table1 = innerJoinFunction.innerJoin(table, data[2], table2, data[4], newNameTable, databaseManager);
         tablePrinter.printTable(table1);
     }
 }
