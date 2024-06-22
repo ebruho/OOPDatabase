@@ -4,8 +4,17 @@ import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
 import bg.tu_varna.sit.a4.f22621685.project.table.Column;
 import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
+/**
+ * The DescribeFunction class provides functionality to retrieve and print column information for a given table.
+ */
 public class DescribeFunction {
 
+    /**
+     * Retrieves and prints column information (column name and data type) for the specified table.
+     *
+     * @param table the table whose columns information is to be retrieved
+     * @throws InvalidException if the provided table is null
+     */
     public void getColumnInfo(Table table) throws InvalidException {
         if (table == null) {
             throw new InvalidException("Error: Invalid table.");

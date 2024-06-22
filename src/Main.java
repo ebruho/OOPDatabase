@@ -1,13 +1,6 @@
 
-import bg.tu_varna.sit.a4.f22621685.project.Database.DatabaseManager;
-import bg.tu_varna.sit.a4.f22621685.project.commands.*;
 import bg.tu_varna.sit.a4.f22621685.project.errors.InvalidException;
 import bg.tu_varna.sit.a4.f22621685.project.menu.MenuInvoker;
-import bg.tu_varna.sit.a4.f22621685.project.table.Cell;
-import bg.tu_varna.sit.a4.f22621685.project.table.Column;
-import bg.tu_varna.sit.a4.f22621685.project.table.Table;
-
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws InvalidException {

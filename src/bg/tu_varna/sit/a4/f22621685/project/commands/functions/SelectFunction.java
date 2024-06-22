@@ -7,12 +7,22 @@ import bg.tu_varna.sit.a4.f22621685.project.table.Table;
 
 import java.util.List;
 
+/**
+ * The SelectFunction class provides functionality to select rows from a table based on a column and search value.
+ */
 public class SelectFunction {
 
+    /**
+     * Selects rows from a table based on a column name and search value.
+     *
+     * @param columnName  the name of the column to search
+     * @param searchValue the value to search for in the column
+     * @param table       the table from which to select rows
+     * @throws InvalidException if the table is invalid (null)
+     */
     public void selectRows(String columnName, Object searchValue, Table table) throws InvalidException {
         if (table == null) {
             throw new InvalidException("Error: Invalid table.");
-
         }
 
         // Намиране на индекса на търсената колона
@@ -34,17 +44,30 @@ public class SelectFunction {
         System.out.println("Selected rows from table '" + table.getTableName() + "' where column '" + columnName + "' has value '" + searchValue + "':");
 
         // Извеждане на съответните редове
+        // Print the matching rows
         Column searchColumn = table.getColumns().get(columnIndex);
+        boolean found = false;
         for (int i = 0; i < searchColumn.getCells().size(); i++) {
             Cell cell = searchColumn.getCells().get(i);
             Object data = cell.getData();
-            if (data != null && data.equals(searchValue)) {
+            if (data != null && String.valueOf(data).equals(searchValue)) {
                 System.out.println("Row " + (i + 1) + ": " + formatRow(table, i));
+                found = true;
             }
+        }
+
+        if (!found) {
+            System.out.println("No rows found with " + columnName + " = " + searchValue);
         }
     }
 
-    // Форматиране на реда за отпечатване
+    /**
+     * Formats the row for printing.
+     *
+     * @param table    the table containing the row
+     * @param rowIndex the index of the row to format
+     * @return the formatted row as a string
+     */
     private String formatRow(Table table, int rowIndex) {
         List<Column> columns = table.getColumns();
         StringBuilder formattedRow = new StringBuilder();
